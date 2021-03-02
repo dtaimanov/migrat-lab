@@ -26,7 +26,7 @@ public class Research extends StandardEntity {
     @Composition
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.UNLINK)
-    @OneToMany(mappedBy = "research")
+    @ManyToMany(mappedBy = "research")
     private List<Employee> participants;
 
     @NotNull

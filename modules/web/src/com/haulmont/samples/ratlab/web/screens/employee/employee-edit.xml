@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://employeeEdit.caption"
+        focusComponent="form"
+        messagesPack="com.haulmont.samples.ratlab.web.screens.employee">
+    <data>
+        <instance id="employeeDc"
+                  class="com.haulmont.samples.ratlab.entity.stuff.Employee">
+            <view extends="_local">
+                <property name="laboratory" view="_minimal"/>
+                <property name="homeAddress"/>
+                <property name="supervisor" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+        <collection id="supervisorsDc"
+                    class="com.haulmont.samples.ratlab.entity.stuff.Employee">
+            <view extends="_base"/>
+            <loader id="supervisorsDl">
+                <!--TODO positions hierarchy and filter by level-->
+                <query>
+                    <![CDATA[select e from ratlab_Employee e]]>
+                </query>
+            </loader>
+        </collection>
+
+    </data>
+
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="employeeDc">
+            <column width="350px">
+                <textField id="nameField" property="name"/>
+                <lookupField id="positionField" property="position"/>
+                <textField id="experienceField" property="experience"/>
+                <dateField id="sinceField" property="since"/>
+                <pickerField property="laboratory"/>
+                <pickerField property="homeAddress"/>
+                <lookupField property="supervisor" optionsContainer="supervisorsDc"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

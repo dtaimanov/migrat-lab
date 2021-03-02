@@ -1,7 +1,6 @@
 package com.haulmont.samples.ratlab.entity.stuff;
 
 import com.haulmont.chile.core.annotations.NamePattern;
-import com.haulmont.chile.core.annotations.NumberFormat;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -28,7 +27,6 @@ public class Employee extends StandardEntity {
     @Column(name = "POSITION_", nullable = false)
     private String position;
 
-    @NumberFormat(pattern = "*d*")
     @Column(name = "EXPERIENCE", nullable = false)
     @NotNull
     private Integer experience;

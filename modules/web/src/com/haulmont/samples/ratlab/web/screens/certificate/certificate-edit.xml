@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://certificateEdit.caption"
+        focusComponent="form"
+        messagesPack="com.haulmont.samples.ratlab.web.screens.certificate">
+    <data>
+        <instance id="certificateDc"
+                  class="com.haulmont.samples.ratlab.entity.stuff.Certificate">
+            <view extends="_local">
+                <property name="owner" view="_minimal"/>
+            </view>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="certificateDc">
+            <column width="350px">
+                <textField id="titleField" property="title"/>
+                <pickerField property="owner"/>
+                <dateField id="aquiredField" property="aquired"/>
+                <textField id="codeField" property="code"/>
+                <textArea id="descriptionField" property="description" rows="5"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

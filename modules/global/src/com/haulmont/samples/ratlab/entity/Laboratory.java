@@ -1,6 +1,5 @@
 package com.haulmont.samples.ratlab.entity;
 
-import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.CaseConversion;
@@ -28,8 +27,7 @@ public class Laboratory extends StandardEntity {
     @OneToMany(mappedBy = "laboratory")
     @OnDelete(DeletePolicy.UNLINK)
     @OnDeleteInverse(DeletePolicy.UNLINK)
-    @Composition
-    private List<Employee> employee;
+    private List<Employee> employees;
 
     @Column(name = "DESCRIPTION")
     private String description;
@@ -101,12 +99,12 @@ public class Laboratory extends StandardEntity {
         this.description = description;
     }
 
-    public void setEmployee(List<Employee> employee) {
-        this.employee = employee;
+    public void setEmployees(List<Employee> employees) {
+        this.employees = employees;
     }
 
-    public List<Employee> getEmployee() {
-        return employee;
+    public List<Employee> getEmployees() {
+        return employees;
     }
 
     public String getTitle() {

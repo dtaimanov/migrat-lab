@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
     <menu id="application-ratlab" insertBefore="administration" caption="mainMsg://menu_config.application-ratlab">
+        <item screen="ratlab_Rat.browse" caption="mainMsg://menu_config.ratlab_Rat.browse"/>
+        <item screen="ratlab_Laboratory.browse" caption="mainMsg://menu_config.ratlab_Laboratory.browse"/>
+        <item screen="ratlab_Certificate.browse" caption="mainMsg://menu_config.ratlab_Certificate.browse"/>
+        <item screen="ratlab_Employee.browse" caption="mainMsg://menu_config.ratlab_Employee.browse"/>
+        <item screen="ratlab_MiscResource.browse" caption="mainMsg://menu_config.ratlab_MiscResource.browse"/>
+        <item screen="ratlab_Research.browse" caption="mainMsg://menu_config.ratlab_Research.browse"/>
     </menu>
 </menu-config>

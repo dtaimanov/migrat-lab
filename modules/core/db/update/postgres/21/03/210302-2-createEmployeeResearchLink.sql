@@ -1,0 +1,2 @@
+alter table RATLAB_EMPLOYEE_RESEARCH_LINK add constraint FK_EMPRES_ON_EMPLOYEE foreign key (EMPLOYEE_ID) references RATLAB_EMPLOYEE(ID);
+alter table RATLAB_EMPLOYEE_RESEARCH_LINK add constraint FK_EMPRES_ON_RESEARCH foreign key (RESEARCH_ID) references RATLAB_RESEARCH(ID);

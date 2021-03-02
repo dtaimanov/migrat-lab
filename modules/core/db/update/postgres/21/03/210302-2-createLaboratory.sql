@@ -1,0 +1,3 @@
+create unique index IDX_RATLAB_LABORATORY_UK_CODE on RATLAB_LABORATORY (CODE) where DELETE_TS is null ;
+create unique index IDX_RATLAB_LABORATORY_UK_TITLE on RATLAB_LABORATORY (TITLE) where DELETE_TS is null ;
+create unique index IDX_RATLAB_LABORATORY_UK_DAY_END on RATLAB_LABORATORY (DAY_END) where DELETE_TS is null ;
