@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<fragment xmlns="http://schemas.haulmont.com/cuba/screen/fragment.xsd">
+    <data>
+        <instance id="addressDc" class="com.haulmont.samples.ratlab.entity.Address"
+                  provided="true"/>
+    </data>
+    <layout>
+        <grid>
+            <columns>
+                <column flex="0"/>
+                <column flex="1"/>
+            </columns>
+            <rows>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.country"/>
+                    <textField id="countryField" dataContainer="addressDc" property="country"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.town"/>
+                    <textField id="townField" dataContainer="addressDc" property="town"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.field1"/>
+                    <textField id="field1Field" dataContainer="addressDc" property="field1"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.field2"/>
+                    <textField id="field2Field" dataContainer="addressDc" property="field2"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.field3"/>
+                    <textField id="field3Field" dataContainer="addressDc" property="field3"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.field4"/>
+                    <textField id="field4Field" dataContainer="addressDc" property="field4"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.field5"/>
+                    <textField id="field5Field" dataContainer="addressDc" property="field5"/>
+                </row>
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.latitude"/>
+                    <textField id="latField" dataContainer="addressDc" property="latitude" datatype="double"/>
+                </row>
+
+                <row>
+                    <label value="msg://com.haulmont.samples.ratlab.entity/Address.longitude"/>
+                    <textField id="lonField" dataContainer="addressDc" property="longitude" datatype="double"/>
+                </row>
+            </rows>
+        </grid>
+    </layout>
+</fragment>

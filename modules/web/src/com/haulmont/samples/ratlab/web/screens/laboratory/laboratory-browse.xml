@@ -76,7 +76,16 @@
                             <textField id="codeField" property="code"/>
                         </column>
                     </form>
+                    <label value="msg://staff" stylename="bold"/>
                     <table id="employeesTable" height="200px" width="100%" dataContainer="employeesDc">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel id="employeesTableBP">
+                            <button id="addButton" action="employeesTable.add"/>
+                            <button id="removeButton" action="employeesTable.remove"/>
+                        </buttonsPanel>
                         <columns>
                             <column id="name"/>
                             <column id="position"/>

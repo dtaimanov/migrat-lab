@@ -1,5 +1,6 @@
 package com.haulmont.samples.ratlab.entity.stuff;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
@@ -40,11 +41,8 @@ public class Employee extends StandardEntity {
     @ManyToOne(fetch = FetchType.LAZY)
     private Laboratory laboratory;
 
-    @JoinTable(name = "RATLAB_EMPLOYEE_RESEARCH_LINK",
-            joinColumns = @JoinColumn(name = "EMPLOYEE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "RESEARCH_ID"))
-    @ManyToMany
-    private List<Research> research;
+    @ManyToMany(mappedBy = "participants")
+    private List<Research> researches;
 
     @OnDelete(DeletePolicy.CASCADE)
     @OneToOne(fetch = FetchType.LAZY)
@@ -68,14 +66,15 @@ public class Employee extends StandardEntity {
 
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "owner")
-    private List<Certificate> certificate;
+    @Composition
+    private List<Certificate> certificates;
 
-    public List<Certificate> getCertificate() {
-        return certificate;
+    public List<Certificate> getCertificates() {
+        return certificates;
     }
 
-    public void setCertificate(List<Certificate> certificate) {
-        this.certificate = certificate;
+    public void setCertificates(List<Certificate> certificates) {
+        this.certificates = certificates;
     }
 
     public Address getHomeAddress() {
@@ -102,12 +101,12 @@ public class Employee extends StandardEntity {
         return laboratory;
     }
 
-    public List<Research> getResearch() {
-        return research;
+    public List<Research> getResearches() {
+        return researches;
     }
 
-    public void setResearch(List<Research> research) {
-        this.research = research;
+    public void setResearches(List<Research> researches) {
+        this.researches = researches;
     }
 
     public Date getSince() {

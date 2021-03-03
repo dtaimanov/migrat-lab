@@ -5,7 +5,13 @@
     <data>
         <collection id="researchesDc"
                     class="com.haulmont.samples.ratlab.entity.Research">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="participants" view="_minimal">
+                    <property name="position"/>
+                    <property name="experience"/>
+                    <property name="laboratory" view="_minimal"/>
+                </property>
+            </view>
             <loader id="researchesDl">
                 <query>
                     <![CDATA[select e from ratlab_Research e]]>
@@ -14,8 +20,18 @@
         </collection>
         <instance id="researchDc"
                   class="com.haulmont.samples.ratlab.entity.Research">
-            <view extends="_local"/>
+            <view extends="_local">
+                <property name="participants" view="_minimal">
+                    <property name="position"/>
+                    <property name="experience"/>
+                    <property name="since"/>
+                    <property name="laboratory" view="_minimal"/>
+                    <property name="supervisor" view="_minimal"/>
+                    <property name="homeAddress" view="_minimal"/>
+                </property>
+            </view>
             <loader/>
+            <collection id="employeesDc" property="participants"/>
         </instance>
     </data>
     <actions>
@@ -56,14 +72,32 @@
                 </hbox>
             </vbox>
             <vbox id="editBox" height="100%" margin="false,false,false,true" expand="fieldGroupBox" spacing="true">
-                <scrollBox id="fieldGroupBox">
+                <scrollBox id="fieldGroupBox" spacing="true">
                     <form id="form" dataContainer="researchDc">
-                        <column width="350px">
+                        <column width="100%">
                             <textField id="titleField" property="title"/>
                             <dateField id="startTimeField" property="startTime"/>
                             <textArea id="descriptionField" property="description" rows="5"/>
                         </column>
                     </form>
+                    <label value="msg://researchers" htmlEnabled="true"/>
+                    <table id="employeesTable" height="300px" width="100%" dataContainer="employeesDc">
+                        <actions>
+                            <action id="add" type="add"/>
+                            <action id="remove" type="remove"/>
+                        </actions>
+                        <buttonsPanel id="employeeEditButtonPanel">
+                            <button id="employeesTableAddBtn" action="employeesTable.add"/>
+                            <button id="employeesTableRemoveBtn" action="employeesTable.remove"/>
+                        </buttonsPanel>
+                        <columns>
+                            <column id="name"/>
+                            <column id="position"/>
+                            <column id="experience"/>
+                            <column id="laboratory"/>
+                            <column id="supervisor"/>
+                        </columns>
+                    </table>
                 </scrollBox>
                 <hbox id="actionsPane" spacing="true" visible="false">
                     <button id="saveBtn" action="save"/>

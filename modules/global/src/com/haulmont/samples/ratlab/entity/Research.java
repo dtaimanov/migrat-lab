@@ -1,6 +1,5 @@
 package com.haulmont.samples.ratlab.entity;
 
-import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -23,10 +22,12 @@ public class Research extends StandardEntity {
     @NotNull
     private String title;
 
-    @Composition
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.UNLINK)
-    @ManyToMany(mappedBy = "research")
+    @JoinTable(name = "RATLAB_EMPLOYEE_RESEARCH_LINK",
+            joinColumns = @JoinColumn(name = "RESEARCH_ID"),
+            inverseJoinColumns = @JoinColumn(name = "EMPLOYEE_ID"))
+    @ManyToMany
     private List<Employee> participants;
 
     @NotNull

@@ -1,6 +1,7 @@
 package com.haulmont.samples.ratlab.entity;
 
 import com.haulmont.chile.core.annotations.MetaClass;
+import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.chile.core.annotations.NumberFormat;
 import com.haulmont.cuba.core.entity.EmbeddableEntity;
 
@@ -9,6 +10,7 @@ import javax.persistence.Embeddable;
 
 @Embeddable
 @MetaClass(name = "ratlab_Address")
+@NamePattern("A:%s, %s, %s, %s|field1,field2,town,country")
 public class Address extends EmbeddableEntity {
     private static final long serialVersionUID = -433127418874885914L;
 

@@ -10,7 +10,15 @@
                 <property name="laboratory" view="_minimal"/>
                 <property name="homeAddress"/>
                 <property name="supervisor" view="_minimal"/>
+                <property name="certificates" view="_minimal">
+                    <property name="title"/>
+                    <property name="aquired"/>
+                    <property name="code"/>
+                    <property name="description"/>
+                </property>
             </view>
+            <instance id="addressDc" property="homeAddress"/>
+            <collection id="certificatesDc" property="certificates"/>
             <loader/>
         </instance>
         <collection id="supervisorsDc"
@@ -29,17 +37,46 @@
     <dialogMode height="600"
                 width="800"/>
     <layout expand="editActions" spacing="true">
-        <form id="form" dataContainer="employeeDc">
-            <column width="350px">
-                <textField id="nameField" property="name"/>
-                <lookupField id="positionField" property="position"/>
-                <textField id="experienceField" property="experience"/>
-                <dateField id="sinceField" property="since"/>
-                <pickerField property="laboratory"/>
-                <pickerField property="homeAddress"/>
-                <lookupField property="supervisor" optionsContainer="supervisorsDc"/>
-            </column>
-        </form>
+        <hbox spacing="true">
+            <groupBox caption="msg://general">
+                <form id="form" dataContainer="employeeDc">
+                    <column width="350px">
+                        <textField id="nameField" property="name"/>
+                        <lookupField id="positionField" property="position"/>
+                        <textField id="experienceField" property="experience"/>
+                        <dateField id="sinceField" property="since"/>
+                        <pickerField property="laboratory"/>
+                        <lookupField property="supervisor" optionsContainer="supervisorsDc"/>
+                    </column>
+                </form>
+            </groupBox>
+            <groupBox caption="msg://homeAddress.caption">
+                <fragment screen="ratlab_AddressFragment"/>
+            </groupBox>
+        </hbox>
+        <table id="certificatesTable" height="300px" width="100%" dataContainer="certificatesDc" multiselect="true"
+               presentations="true">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+                <action id="view" type="view"/>
+            </actions>
+            <buttonsPanel alwaysVisible="true">
+                <button id="certificatesTableCreateBtn" action="certificatesTable.create"/>
+                <button id="certificatesTableEditBtn" action="certificatesTable.edit"/>
+                <button id="certificatesTableRemoveBtn" action="certificatesTable.remove"/>
+                <button id="certificatesTableViewBtn" action="certificatesTable.view"/>
+            </buttonsPanel>
+            <columns>
+                <column id="title"/>
+                <column id="aquired"/>
+                <column id="code"/>
+                <column id="description"/>
+            </columns>
+        </table>
+
+
         <hbox id="editActions" spacing="true">
             <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
             <button id="closeBtn" action="windowClose"/>
