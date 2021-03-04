@@ -18,12 +18,24 @@ public class MiscResource extends StandardEntity {
     @Column(name = "NAME")
     private String name;
 
+    @NotNull
+    @Column(name = "TYPE_", nullable = false)
+    private String type;
+
     @Column(name = "AMOUNT")
     private BigDecimal amount;
 
     @NotNull
-    @Column(name = "TYPE_", nullable = false)
-    private String type;
+    @Column(name = "CONSUMABLE", nullable = false, columnDefinition = "boolean default true")
+    private Boolean consumable = false;
+
+    public Boolean getConsumable() {
+        return consumable;
+    }
+
+    public void setConsumable(Boolean consumable) {
+        this.consumable = consumable;
+    }
 
     public ResourceType getType() {
         return type == null ? null : ResourceType.fromId(type);

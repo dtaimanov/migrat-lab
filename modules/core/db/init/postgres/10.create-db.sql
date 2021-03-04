@@ -78,6 +78,7 @@ create table RATLAB_RESEARCH (
     DELETED_BY varchar(50),
     --
     TITLE varchar(255) not null,
+    STATE integer,
     START_TIME timestamp with time zone not null,
     DESCRIPTION text,
     --
@@ -96,8 +97,9 @@ create table RATLAB_MISC_RESOURCE (
     DELETED_BY varchar(50),
     --
     NAME varchar(255),
-    AMOUNT decimal(19, 2),
     TYPE_ varchar(50) not null,
+    AMOUNT decimal(19, 2),
+    CONSUMABLE boolean default true,
     --
     primary key (ID)
 )^
@@ -140,3 +142,23 @@ create table RATLAB_EMPLOYEE_RESEARCH_LINK (
     primary key (EMPLOYEE_ID, RESEARCH_ID)
 )^
 -- end RATLAB_EMPLOYEE_RESEARCH_LINK
+-- begin RATLAB_RESOURCE_REQUIREMENT
+create table RATLAB_RESOURCE_REQUIREMENT (
+    ID uuid,
+    VERSION integer not null,
+    CREATE_TS timestamp,
+    CREATED_BY varchar(50),
+    UPDATE_TS timestamp,
+    UPDATED_BY varchar(50),
+    DELETE_TS timestamp,
+    DELETED_BY varchar(50),
+    --
+    RESOURCE_ID uuid not null,
+    RESEARCH_ID uuid not null,
+    PROVIDED integer,
+    AMOUNT integer not null,
+    CONSUME boolean,
+    --
+    primary key (ID)
+)^
+-- end RATLAB_RESOURCE_REQUIREMENT

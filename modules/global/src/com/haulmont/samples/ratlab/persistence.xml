@@ -6,8 +6,10 @@
         <class>com.haulmont.samples.ratlab.entity.Laboratory</class>
         <class>com.haulmont.samples.ratlab.entity.resources.Rat</class>
         <class>com.haulmont.samples.ratlab.entity.resources.MiscResource</class>
-        <class>com.haulmont.samples.ratlab.entity.Research</class>
+        <class>com.haulmont.samples.ratlab.entity.research.Research</class>
         <class>com.haulmont.samples.ratlab.entity.Address</class>
         <class>com.haulmont.samples.ratlab.entity.stuff.Certificate</class>
+        <class>com.haulmont.samples.ratlab.entity.research.Research</class>
+        <class>com.haulmont.samples.ratlab.entity.research.ResourceRequirement</class>
     </persistence-unit>
 </persistence>

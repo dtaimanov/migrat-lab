@@ -8,7 +8,7 @@ import com.haulmont.cuba.core.entity.annotation.OnDelete;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import com.haulmont.samples.ratlab.entity.Address;
 import com.haulmont.samples.ratlab.entity.Laboratory;
-import com.haulmont.samples.ratlab.entity.Research;
+import com.haulmont.samples.ratlab.entity.research.Research;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;

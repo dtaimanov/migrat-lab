@@ -19,7 +19,7 @@
             </view>
             <instance id="addressDc" property="homeAddress"/>
             <collection id="certificatesDc" property="certificates"/>
-            <loader/>
+            <loader dynamicAttributes="true"/>
         </instance>
         <collection id="supervisorsDc"
                     class="com.haulmont.samples.ratlab.entity.stuff.Employee">

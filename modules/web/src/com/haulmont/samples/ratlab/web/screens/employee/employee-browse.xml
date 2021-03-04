@@ -11,7 +11,7 @@
                 <property name="homeAddress"/>
                 <property name="supervisor" view="_minimal"/>
             </view>
-            <loader id="employeesDl">
+            <loader id="employeesDl" dynamicAttributes="true">
                 <query>
                     <![CDATA[select e from ratlab_Employee e]]>
                 </query>

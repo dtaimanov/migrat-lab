@@ -41,6 +41,7 @@
                         <column id="name"/>
                         <column id="amount"/>
                         <column id="type"/>
+                        <column id="consumable"/>
                     </columns>
                     <rowsCount/>
                     <buttonsPanel id="buttonsPanel"
@@ -62,6 +63,7 @@
                             <textField id="nameField" property="name"/>
                             <textField id="amountField" property="amount"/>
                             <lookupField id="typeField" property="type"/>
+                            <checkBox id="consumableField" property="consumable"/>
                         </column>
                     </form>
                 </scrollBox>

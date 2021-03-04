@@ -1,5 +1,6 @@
-package com.haulmont.samples.ratlab.entity;
+package com.haulmont.samples.ratlab.entity.research;
 
+import com.haulmont.chile.core.annotations.Composition;
 import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
@@ -22,6 +23,10 @@ public class Research extends StandardEntity {
     @NotNull
     private String title;
 
+    @Column(name = "STATE", nullable = false, columnDefinition = "integer default 10")
+    @NotNull
+    private Integer state;
+
     @OnDeleteInverse(DeletePolicy.UNLINK)
     @OnDelete(DeletePolicy.UNLINK)
     @JoinTable(name = "RATLAB_EMPLOYEE_RESEARCH_LINK",
@@ -30,6 +35,11 @@ public class Research extends StandardEntity {
     @ManyToMany
     private List<Employee> participants;
 
+    @Composition
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "research")
+    private List<ResourceRequirement> requirements;
+
     @NotNull
     @Column(name = "START_TIME", nullable = false)
     private OffsetDateTime startTime;
@@ -37,6 +47,22 @@ public class Research extends StandardEntity {
     @Lob
     @Column(name = "DESCRIPTION")
     private String description;
+
+    public State getState() {
+        return state == null ? null : State.fromId(state);
+    }
+
+    public void setState(State state) {
+        this.state = state == null ? null : state.getId();
+    }
+
+    public List<ResourceRequirement> getRequirements() {
+        return requirements;
+    }
+
+    public void setRequirements(List<ResourceRequirement> requirements) {
+        this.requirements = requirements;
+    }
 
     public OffsetDateTime getStartTime() {
         return startTime;
