@@ -1,0 +1,4 @@
+alter table ratlab_resource_requirement add constraint FK_RATLAB_RESOURCE_REQUIREMENT_ON_RESEARCH foreign key (RESEARCH_ID) references RATLAB_RESEARCH(ID);
+alter table ratlab_resource_requirement add constraint FK_RATLAB_RESOURCE_REQUIREMENT_ON_RESOURCE foreign key (RESOURCE_ID) references RATLAB_MISC_RESOURCE(ID);
+create index IDX_RATLAB_RESOURCE_REQUIREMENT_ON_RESEARCH on ratlab_resource_requirement (RESEARCH_ID);
+create index IDX_RATLAB_RESOURCE_REQUIREMENT_ON_RESOURCE on ratlab_resource_requirement (RESOURCE_ID);

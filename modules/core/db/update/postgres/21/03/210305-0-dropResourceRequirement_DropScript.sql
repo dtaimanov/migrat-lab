@@ -1,0 +1,1 @@
+drop table if exists RATLAB_RESOURCE_REQUIREMENT__U51836 cascade ;

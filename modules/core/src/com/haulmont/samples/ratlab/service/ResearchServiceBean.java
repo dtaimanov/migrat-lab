@@ -31,7 +31,7 @@ public class ResearchServiceBean implements ResearchService {
             throw new IllegalStateException(messages.formatMessage(ResearchServiceBean.class, "notForGathering", research.getState()));
         }
         Set<Entity> toCommit = new HashSet<>();
-        for (ResourceRequirement requirement : research.getRequirements()) {
+        for (ResourceRequirement requirement : research.getResources()) {
             MiscResource resource = requirement.getResource();
             if (requirement.getAmount() > resource.getAmount().intValue()) {
                 throw new IllegalStateException(messages.formatMessage(ResearchServiceBean.class, "notEnough", resource.getName()));
@@ -65,10 +65,8 @@ public class ResearchServiceBean implements ResearchService {
         //kinda make research
 
         //release resources if need
-
-        for (ResourceRequirement requirement : research.getRequirements()) {
+        for (ResourceRequirement requirement : research.getResources()) {
             if (!requirement.getConsume() && !requirement.getResource().getConsumable()) {
-                //todo through additor bean having "washing machine" subclass
                 requirement.getResource().setAmount(requirement.getResource().getAmount().add(new BigDecimal(requirement.getProvided())));
                 toCommit.add(requirement.getResource());
             }
@@ -78,6 +76,6 @@ public class ResearchServiceBean implements ResearchService {
 
         research.setState(State.FINISHED);
         toCommit.add(research);
-        dataManager.commit(toCommit.toArray(new Entity[0]));//todo related entities?
+        dataManager.commit(toCommit.toArray(new Entity[0]));
     }
 }

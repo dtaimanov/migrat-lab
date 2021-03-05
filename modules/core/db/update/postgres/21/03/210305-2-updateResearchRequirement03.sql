@@ -1,0 +1,12 @@
+alter table RATLAB_RESEARCH_REQUIREMENT rename column consume to consume__u82515 ;
+alter table RATLAB_RESEARCH_REQUIREMENT rename column amount to amount__u29698 ;
+alter table RATLAB_RESEARCH_REQUIREMENT alter column amount__u29698 drop not null ;
+alter table RATLAB_RESEARCH_REQUIREMENT rename column provided to provided__u23628 ;
+alter table RATLAB_RESEARCH_REQUIREMENT alter column provided__u23628 drop not null ;
+alter table RATLAB_RESEARCH_REQUIREMENT rename column resource_id to resource_id__u77728 ;
+alter table RATLAB_RESEARCH_REQUIREMENT drop constraint FK_RATLAB_RESEARCH_REQUIREMENT_ON_RESOURCE ;
+drop index IDX_RATLAB_RESEARCH_REQUIREMENT_ON_RESOURCE ;
+alter table RATLAB_RESEARCH_REQUIREMENT rename column subject_id to subject_id__u44704 ;
+alter table RATLAB_RESEARCH_REQUIREMENT drop constraint FK_RATLAB_RESEARCH_REQUIREMENT_ON_SUBJECT ;
+drop index IDX_RATLAB_RESEARCH_REQUIREMENT_ON_SUBJECT ;
+alter table RATLAB_RESEARCH_REQUIREMENT rename column dtype to dtype__u17896 ;

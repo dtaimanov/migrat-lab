@@ -11,5 +11,7 @@
         <class>com.haulmont.samples.ratlab.entity.stuff.Certificate</class>
         <class>com.haulmont.samples.ratlab.entity.research.Research</class>
         <class>com.haulmont.samples.ratlab.entity.research.ResourceRequirement</class>
+        <class>com.haulmont.samples.ratlab.entity.research.ResearchRequirement</class>
+        <class>com.haulmont.samples.ratlab.entity.research.SubjectRequirement</class>
     </persistence-unit>
 </persistence>

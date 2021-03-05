@@ -1,0 +1,1 @@
+alter table ratlab_resource_requirement rename to RATLAB_RESOURCE_REQUIREMENT__U51836 ;

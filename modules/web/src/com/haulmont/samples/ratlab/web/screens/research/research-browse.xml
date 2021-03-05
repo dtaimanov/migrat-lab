@@ -29,13 +29,21 @@
                     <property name="supervisor" view="_minimal"/>
                     <property name="homeAddress" view="_minimal"/>
                 </property>
-                <property name="requirements" view="_local">
+                <property name="resources" view="_local">
                     <property name="resource" view="_minimal"/>
+                </property>
+                <property name="subjects" view="_minimal">
+                    <property name="subject" view="_minimal">
+                        <property name="color"/>
+                        <property name="checked"/>
+                    </property>
+                    <property name="mandatory"/>
                 </property>
             </view>
             <loader/>
             <collection id="employeesDc" property="participants"/>
-            <collection id="requirementsDc" property="requirements"/>
+            <collection id="resourcesDc" property="resources"/>
+            <collection id="subjectsDc" property="subjects"/>
         </instance>
     </data>
     <actions>
@@ -73,6 +81,7 @@
                         <button id="editBtn" action="table.edit"/>
                         <button id="removeBtn" action="table.remove"/>
                         <button id="gatherBtn" action="table.gatherResources"/>
+                        <button id="performBtn" action="table.perform"/>
                         <button id="refreshBlt" action="table.refresh"/>
                     </buttonsPanel>
                 </groupTable>
@@ -113,33 +122,59 @@
                             </table>
                         </scrollBox>
                     </tab>
-                    <tab id="tab_1" caption="Tab2">
-                        <table id="resourceRequirementsTable" height="100%" width="100%"
-                               dataContainer="requirementsDc" multiselect="true" presentations="true">
-                            <actions>
-                                <action id="create" type="create"/>
-                                <action id="edit" type="edit"/>
-                                <action id="excel" type="excel"/>
-                                <action id="remove" type="remove"/>
-                            </actions>
-                            <buttonsPanel alwaysVisible="true">
-                                <button id="resourceRequirementsTableCreateBtn"
-                                        action="resourceRequirementsTable.create"/>
-                                <button id="resourceRequirementsTableEditBtn"
-                                        action="resourceRequirementsTable.edit"/>
-                                <button id="resourceRequirementsTableExcelBtn"
-                                        action="resourceRequirementsTable.excel"/>
-                                <button id="resourceRequirementsTableRemoveBtn"
-                                        action="resourceRequirementsTable.remove"/>
-                            </buttonsPanel>
-                            <columns>
-                                <column id="resource"/>
-                                <column id="research"/>
-                                <column id="provided"/>
-                                <column id="amount"/>
-                                <column id="consume"/>
-                            </columns>
-                        </table>
+                    <tab id="tab_1" caption="Requirements">
+                        <vbox id="requirements">
+                            <groupBox caption="msg://resourceRequirements" height="300px">
+                                <table id="resourceRequirementsTable" height="100%" width="100%"
+                                       dataContainer="resourcesDc" multiselect="true" presentations="true">
+                                    <actions>
+                                        <action id="create" type="create"/>
+                                        <action id="edit" type="edit"/>
+                                        <action id="excel" type="excel"/>
+                                        <action id="remove" type="remove"/>
+                                    </actions>
+                                    <buttonsPanel alwaysVisible="true">
+                                        <button id="resourceRequirementsTableCreateBtn"
+                                                action="resourceRequirementsTable.create"/>
+                                        <button id="resourceRequirementsTableEditBtn"
+                                                action="resourceRequirementsTable.edit"/>
+                                        <button id="resourceRequirementsTableExcelBtn"
+                                                action="resourceRequirementsTable.excel"/>
+                                        <button id="resourceRequirementsTableRemoveBtn"
+                                                action="resourceRequirementsTable.remove"/>
+                                    </buttonsPanel>
+                                    <columns>
+                                        <column id="resource"/>
+                                        <column id="research"/>
+                                        <column id="provided"/>
+                                        <column id="amount"/>
+                                        <column id="consume"/>
+                                    </columns>
+                                </table>
+                            </groupBox>
+                            <groupBox caption="msg://subjectRequirements" height="300px">
+                                <table id="subjectRequirementsTable" height="100%" width="100%"
+                                       dataContainer="subjectsDc">
+                                    <actions>
+                                        <action id="create" type="create"/>
+                                        <action id="remove" type="remove"/>
+                                        <action id="view" type="view"/>
+                                    </actions>
+                                    <buttonsPanel alwaysVisible="true">
+                                        <button id="subjectRequirementsTableCreateBtn"
+                                                action="subjectRequirementsTable.create"/>
+                                        <button id="subjectRequirementsTableRemoveBtn"
+                                                action="subjectRequirementsTable.remove"/>
+                                        <button id="subjectRequirementsTableViewBtn"
+                                                action="subjectRequirementsTable.view"/>
+                                    </buttonsPanel>
+                                    <columns>
+                                        <column id="mandatory"/>
+                                        <column id="subject"/>
+                                    </columns>
+                                </table>
+                            </groupBox>
+                        </vbox>
                     </tab>
                 </tabSheet>
                 <hbox id="actionsPane" spacing="true" visible="false">

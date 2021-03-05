@@ -38,7 +38,13 @@ public class Research extends StandardEntity {
     @Composition
     @OnDelete(DeletePolicy.CASCADE)
     @OneToMany(mappedBy = "research")
-    private List<ResourceRequirement> requirements;
+    private List<ResourceRequirement> resources;
+
+    @Composition
+    @OnDeleteInverse(DeletePolicy.DENY)
+    @OnDelete(DeletePolicy.CASCADE)
+    @OneToMany(mappedBy = "research")
+    private List<SubjectRequirement> subjects;
 
     @NotNull
     @Column(name = "START_TIME", nullable = false)
@@ -48,6 +54,14 @@ public class Research extends StandardEntity {
     @Column(name = "DESCRIPTION")
     private String description;
 
+    public List<SubjectRequirement> getSubjects() {
+        return subjects;
+    }
+
+    public void setSubjects(List<SubjectRequirement> subjects) {
+        this.subjects = subjects;
+    }
+
     public State getState() {
         return state == null ? null : State.fromId(state);
     }
@@ -56,12 +70,12 @@ public class Research extends StandardEntity {
         this.state = state == null ? null : state.getId();
     }
 
-    public List<ResourceRequirement> getRequirements() {
-        return requirements;
+    public List<ResourceRequirement> getResources() {
+        return resources;
     }
 
-    public void setRequirements(List<ResourceRequirement> requirements) {
-        this.requirements = requirements;
+    public void setResources(List<ResourceRequirement> resources) {
+        this.resources = resources;
     }
 
     public OffsetDateTime getStartTime() {

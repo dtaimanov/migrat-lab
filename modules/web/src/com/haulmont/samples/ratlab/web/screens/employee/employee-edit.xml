@@ -24,7 +24,7 @@
         <collection id="supervisorsDc"
                     class="com.haulmont.samples.ratlab.entity.stuff.Employee">
             <view extends="_base"/>
-            <loader id="supervisorsDl">
+            <loader id="supervisorsDl" dynamicAttributes="true">
                 <!--TODO positions hierarchy and filter by level-->
                 <query>
                     <![CDATA[select e from ratlab_Employee e]]>
