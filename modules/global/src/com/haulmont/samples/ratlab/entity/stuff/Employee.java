@@ -5,6 +5,7 @@ import com.haulmont.chile.core.annotations.NamePattern;
 import com.haulmont.cuba.core.entity.StandardEntity;
 import com.haulmont.cuba.core.entity.annotation.EmbeddedParameters;
 import com.haulmont.cuba.core.entity.annotation.OnDelete;
+import com.haulmont.cuba.core.entity.annotation.OnDeleteInverse;
 import com.haulmont.cuba.core.global.DeletePolicy;
 import com.haulmont.samples.ratlab.entity.Address;
 import com.haulmont.samples.ratlab.entity.Laboratory;
@@ -44,7 +45,7 @@ public class Employee extends StandardEntity {
     @ManyToMany(mappedBy = "participants")
     private List<Research> researches;
 
-    @OnDelete(DeletePolicy.CASCADE)
+    @OnDeleteInverse(DeletePolicy.DENY)
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "SUPERVISOR_ID")
     private Employee supervisor;
