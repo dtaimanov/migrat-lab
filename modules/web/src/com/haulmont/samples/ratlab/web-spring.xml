@@ -12,6 +12,7 @@
         <property name="remoteServices">
             <map>
                 <entry key="ratlab_ResearchService" value="com.haulmont.samples.ratlab.service.ResearchService"/>
+                <entry key="ratlab_ResourcesService" value="com.haulmont.samples.ratlab.service.ResourcesService"/>
             </map>
         </property>
     </bean>
