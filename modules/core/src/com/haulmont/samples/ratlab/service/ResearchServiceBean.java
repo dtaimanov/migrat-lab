@@ -1,8 +1,8 @@
 package com.haulmont.samples.ratlab.service;
 
+import com.haulmont.cuba.core.app.EmailerAPI;
 import com.haulmont.cuba.core.entity.Entity;
-import com.haulmont.cuba.core.global.DataManager;
-import com.haulmont.cuba.core.global.Messages;
+import com.haulmont.cuba.core.global.*;
 import com.haulmont.samples.ratlab.entity.research.Research;
 import com.haulmont.samples.ratlab.entity.research.ResourceRequirement;
 import com.haulmont.samples.ratlab.entity.research.State;
@@ -23,6 +23,9 @@ public class ResearchServiceBean implements ResearchService {
 
     @Inject
     private DataManager dataManager;
+
+    @Inject
+    private EmailerAPI emailerAPI;
 
     @Override
     public void gatherResources(Research research) throws IllegalStateException {
@@ -77,5 +80,15 @@ public class ResearchServiceBean implements ResearchService {
         research.setState(State.FINISHED);
         toCommit.add(research);
         dataManager.commit(toCommit.toArray(new Entity[0]));
+    }
+
+    @Override
+    public void sendEmail() throws EmailException {
+        EmailInfo emailInfo = EmailInfoBuilder.create()
+                .setAddresses("d.taimanov@haulmont.com")
+                .setCaption("Email subject")
+                .setBody("Some email body")
+                .build();
+        emailerAPI.sendEmail(emailInfo);
     }
 }

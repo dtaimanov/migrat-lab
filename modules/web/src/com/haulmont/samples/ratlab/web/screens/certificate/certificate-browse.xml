@@ -27,11 +27,13 @@
         </filter>
         <groupTable id="certificatesTable"
                     width="100%"
-                    dataContainer="certificatesDc">
+                    dataContainer="certificatesDc"
+                    multiselect="true">
             <actions>
                 <action id="create" type="create"/>
                 <action id="edit" type="edit"/>
                 <action id="remove" type="remove"/>
+                <action id="sendEmail"/>
             </actions>
             <columns>
                 <column id="title"/>
@@ -46,6 +48,7 @@
                 <button id="createBtn" action="certificatesTable.create"/>
                 <button id="editBtn" action="certificatesTable.edit"/>
                 <button id="removeBtn" action="certificatesTable.remove"/>
+                <button id="sndEmlBtn" action="certificatesTable.sendEmail"/>
             </buttonsPanel>
         </groupTable>
         <hbox id="lookupActions" spacing="true" visible="false">
