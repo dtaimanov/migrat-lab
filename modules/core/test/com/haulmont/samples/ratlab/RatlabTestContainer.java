@@ -12,7 +12,9 @@ public class RatlabTestContainer extends TestContainer {
         //noinspection ArraysAsListWithZeroOrOneArgument
         appComponents = Arrays.asList(
                 "com.haulmont.cuba",
-                "com.haulmont.reports");
+                "com.haulmont.reports",
+                "com.haulmont.addon.restapi",
+                "com.haulmont.charts");
         appPropertiesFiles = Arrays.asList(
                 // List the files defined in your web.xml
                 // in appPropertiesConfig context parameter of the core module

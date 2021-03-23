@@ -2,7 +2,8 @@
 <window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
         caption="msg://employeeBrowse.caption"
         focusComponent="employeesTable"
-        messagesPack="com.haulmont.samples.ratlab.web.screens.employee">
+        messagesPack="com.haulmont.samples.ratlab.web.screens.employee"
+        xmlns:chart="http://schemas.haulmont.com/charts/charts.xsd">
     <data readOnly="true">
         <collection id="employeesDc"
                     class="com.haulmont.samples.ratlab.entity.stuff.Employee">
@@ -53,6 +54,12 @@
             </buttonsPanel>
         </groupTable>
 
+        <chart:pieChart id="pieChart"
+                        dataContainer="employeesDc"
+                        titleField="name"
+                        valueField="experience"
+                        width="100%"
+                        height="400px"/>
         <hbox id="lookupActions" spacing="true" visible="false">
             <button action="lookupSelectAction"/>
             <button action="lookupCancelAction"/>
